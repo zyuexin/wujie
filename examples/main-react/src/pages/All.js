@@ -21,6 +21,7 @@ export default function React16() {
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <div className="all-item">
+      <textarea></textarea>
         <WujieReact
           height="100%"
           width="100%"
@@ -41,7 +42,7 @@ export default function React16() {
           alive={true}
         ></WujieReact>
       </div>
-      <div className="all-item">
+      {/* <div className="all-item">
         <WujieReact
           height="100%"
           width="100%"
@@ -81,7 +82,7 @@ export default function React16() {
           sync={true}
           props={props}
         ></WujieReact>
-      </div>
+      </div> */}
     </div>
   );
 }

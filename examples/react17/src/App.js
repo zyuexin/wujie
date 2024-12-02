@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import { BrowserRouter as Router, Switch, Route, NavLink, Redirect, useHistory, useLocation } from "react-router-dom";
 import Dialog from "./Dialog";
@@ -7,6 +7,8 @@ import Communication from "./Communication";
 import State from "./State";
 import Tag from "antd/es/tag";
 import Button from "antd/es/button";
+import Input from "antd/es/input";
+// import Spread from './spreadjs'
 import "antd/es/tag/style/css";
 import "antd/es/button/style/css";
 import "antd/es/modal/style/css";
@@ -17,6 +19,9 @@ const basename = process.env.NODE_ENV === "production" ? "/demo-react17/" : "";
 
 const Home = () => (
   <div>
+    <Button onClick={() => {
+        console.log(getSelection())
+      }}>getSelection</Button>
     <h2>react17示例</h2>
     <p>
       当前react版本{" "}
@@ -62,39 +67,33 @@ function Nav() {
   )
 }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Router basename={basename}>
-          <div>
-            <Nav />
-            <img src={logo} className="App-logo" alt="logo" />
-            <Switch>
-              <Route exact path="/home">
-                <Home />
-              </Route>
-              <Route path="/dialog">
-                <Dialog />
-              </Route>
-              <Route path="/location">
-                <Location />
-              </Route>
-              <Route path="/communication">
-                <Communication />
-              </Route>
-              <Route path="/state">
-                <State />
-              </Route>
-              <Route exact path="/">
-                <Redirect to="/home" />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+      html: ''
+  };
+
+  componentDidMount() {
+      window.addEventListener('keydown', () => {
+        console.log('123213')
+      }, false)
+  }
+
+  render() {
+      return (
+          <>
+              {/* <EditNode
+                  enabled
+                  value={this.state.html}
+                  onChange={(value) => {
+                      //当输入值改变，调用setState()更新的时候，不管你在哪个位置输入，光标妥妥的会跳到第一个位置
+                      this.setState({ html: value });
+                  }}
+              /> */}
+              <Input.TextArea />
+              {/* <Spread></Spread> */}
+          </>
+      );
+  }
 }
 
 export default App;

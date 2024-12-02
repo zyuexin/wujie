@@ -8,6 +8,8 @@ import Font from "./Font";
 import logo from "./logo.svg";
 import Tag from "antd/es/tag";
 import Button from "antd/es/button";
+import Input from "antd/es/input";
+import Spread from './spreadjs'
 import "antd/es/tag/style/css";
 import "antd/es/button/style/css";
 import "antd/es/modal/style/css";
@@ -37,48 +39,24 @@ const Home = () => (
   </div>
 );
 
-export default function App() {
-  // 在 react16-sub 路由下主动告知主应用路由跳转，主应用也跳到相应路由高亮菜单栏
-  const location = useLocation()
-  useEffect(() => {
-    window.$wujie?.bus.$emit('sub-route-change', "react16", location.pathname)
-  }, [location])
-
-  return (
-    <div>
-      <nav>
-        <NavLink to="/home">首页</NavLink> | <NavLink to="/dialog">弹窗</NavLink> |{" "}
-        <NavLink to="/location">路由</NavLink> | <NavLink to="/communication">通信</NavLink> |{" "}
-        <NavLink to="/nest">内嵌</NavLink> | <NavLink to="/font">字体</NavLink>
-      </nav>
-
-      <div>
-        <img src={logo} className="App-logo" alt="logo" />
-      </div>
-
-      <Switch>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route path="/dialog">
-          <Dialog />
-        </Route>
-        <Route path="/location">
-          <Location />
-        </Route>
-        <Route path="/communication">
-          <Communication />
-        </Route>
-        <Route path="/nest">
-          <React17 />
-        </Route>
-        <Route path="/font">
-          <Font />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </Switch>
-    </div>
-  );
+export default class App extends React.Component {
+  state = {
+      html: ''
+  };
+  render() {
+      return (
+          <>
+              {/* <EditNode
+                  enabled
+                  value={this.state.html}
+                  onChange={(value) => {
+                      //当输入值改变，调用setState()更新的时候，不管你在哪个位置输入，光标妥妥的会跳到第一个位置
+                      this.setState({ html: value });
+                  }}
+              /> */}
+              <Input.TextArea />
+              <Spread></Spread>
+          </>
+      );
+  }
 }
