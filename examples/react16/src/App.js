@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import { NavLink, Route, Switch, Redirect, useLocation } from "react-router-dom";
 import Dialog from "./Dialog";
 import Location from "./Location";
@@ -15,6 +15,8 @@ import "antd/es/button/style/css";
 import "antd/es/modal/style/css";
 import "antd/es/select/style/css";
 import "antd/es/popover/style/css";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const Home = () => (
   <div>
@@ -39,9 +41,16 @@ const Home = () => (
   </div>
 );
 
+function MyComponent() {
+  const [value, setValue] = useState('');
+
+  return <ReactQuill theme="snow" value={value} onChange={setValue} />;
+}
+
 export default class App extends React.Component {
   state = {
-      html: ''
+      html: '',
+      value: ''
   };
   render() {
       return (
@@ -54,6 +63,7 @@ export default class App extends React.Component {
                       this.setState({ html: value });
                   }}
               /> */}
+              <ReactQuill theme="snow" value={this.state.value} onChange={() => this.setState()} />;
               <Input.TextArea />
               <Spread></Spread>
           </>

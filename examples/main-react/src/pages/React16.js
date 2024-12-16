@@ -18,9 +18,10 @@ export default function React16() {
     <WujieReact
       width="100%"
       height="100%"
-      name="react16"
-      url={react16Url}
-      sync={!path}
+      name="ospreact16"
+      // url={react16Url}
+      url={'http://localhost:3000/#/formPlay?type=react&formID=gridheaderex'}
+      // sync={!path}
       props={props}
     ></WujieReact>
   );

@@ -37,9 +37,13 @@ declare global {
  * 定义 wujie webComponent，将shadow包裹并获得dom装载和卸载的生命周期
  */
 export function defineWujieWebComponent() {
+  // 这是Web组件规范的一部分，允许开发者定义和使用自定义元素
   const customElements = window.customElements;
+  // 首先检查 customElements 对象是否存在（确保浏览器支持自定义元素），然后检查是否已经定义了名为 wujie-app 的自定义元素。如果没有定义，则执行大括号内的代码
   if (customElements && !customElements?.get("wujie-app")) {
+    // WujieApp 类代表自定义元素 wujie-app 的行为。
     class WujieApp extends HTMLElement {
+      // 当自定义元素被插入到DOM中时，浏览器会自动调用此方法
       connectedCallback(): void {
         if (this.shadowRoot) return;
         const shadowRoot = this.attachShadow({ mode: "open" });
@@ -48,6 +52,7 @@ export function defineWujieWebComponent() {
         sandbox.shadowRoot = shadowRoot;
       }
 
+      // 当自定义元素被从DOM中移除时，浏览器会自动调用此方法。
       disconnectedCallback(): void {
         const sandbox = getWujieById(this.getAttribute(WUJIE_APP_ID));
         sandbox?.unmount();

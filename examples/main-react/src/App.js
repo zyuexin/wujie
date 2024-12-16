@@ -156,7 +156,7 @@ class App extends React.PureComponent {
             <Nav />
           </div>
           <div className="content" onClick={() => this.changeActive(false)}>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea name="" id="" cols="30" rows="10" placeholder="主应用输入框" style={{padding:8}}></textarea>
             <Routes>
               <Route exact path="/home" element={<Home changeActive={this.changeActive} />} />
               <Route exact path="/react16" element={<React16 />} />

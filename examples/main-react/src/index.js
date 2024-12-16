@@ -30,17 +30,17 @@ const attrs = isProduction ? { src: hostMap("//localhost:7700/") } : {};
  * 配置应用，主要是设置默认配置
  * preloadApp、startApp的配置会基于这个配置做覆盖
  */
-// setupApp({
-//   name: "react16",
-//   url: hostMap("//localhost:7600/"),
-//   attrs,
-//   exec: true,
-//   fetch: credentialsFetch,
-//   plugins,
-//   prefix: { "prefix-dialog": "/dialog", "prefix-location": "/location" },
-//   degrade,
-//   ...lifecycles,
-// });
+setupApp({
+  name: "react16",
+  url: hostMap("//localhost:7600/"),
+  attrs,
+  exec: true,
+  fetch: credentialsFetch,
+  plugins,
+  prefix: { "prefix-dialog": "/dialog", "prefix-location": "/location" },
+  degrade: false,
+  ...lifecycles,
+});
 
 setupApp({
   name: "react17",

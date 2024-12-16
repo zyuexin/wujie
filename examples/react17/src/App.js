@@ -74,7 +74,7 @@ class App extends React.Component {
 
   componentDidMount() {
       window.addEventListener('keydown', () => {
-        console.log('123213')
+        // console.log('123213')
       }, false)
   }
 
